@@ -1,0 +1,31 @@
+.form-tag {
+    display: none;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+    padding: 20px;
+    .form-group {
+        margin-bottom: 20px;
+        input {
+            width: 100%;
+            background: #fff;
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            box-sizing: border-box;
+            border-radius: 30px;
+        }
+    }
+    &__btn {
+        position: absolute;
+        margin-top: 2px;
+        margin-left: 60px;
+    }
+    &.active {
+        display: block;
+    }
+}
