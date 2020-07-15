@@ -1,15 +1,16 @@
-const authController = require("../contollers/authControllers");
-const { authorize } = require("../middlewares/middleware");
+const authController = require("../controllers/authControllers");
+
+// const { authorize } = require("../middlewares/middleware");
 
 const router = require("express").Router();
 
-console.log(authorize);
-
-router.get("/test", authorize, (req, res) => {
-  res.send("text");
-});
-
 router.post("/register", authController.registerUser);
+router.get("/login", authController.getLoginForm);
 router.post("/login", authController.loginUser);
+router.get("/logout", authController.logoutUser);
+
+router.get("/test", authController.authorize, (req, res) => {
+  res.render("test");
+});
 
 module.exports = router;

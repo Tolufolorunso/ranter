@@ -3,7 +3,7 @@
         <div class="container">
             <div class="home__header__form">
                 <h1>tolu</h1>
-                <form action="/users/register" method="POST" class="form-tag ">
+                <form action="/users/register" method="POST" class="form-tag register-form" id="register-form">
                     <div class="form-group">
                         <input type="text" placeholder="Enter Name" name="name">
                     </div>
@@ -22,7 +22,7 @@
                     </div>
 
                 </form>
-                <form action="/users/login" method="POST" class="form-tag active">
+                <form action="/users/login" method="POST" class="form-tag login-form active" id="login-form">
                     <div class="form-group">
                         <input type="text" placeholder="Enter email" name="email">
                     </div>
@@ -34,7 +34,7 @@
                         <button type="submit" class="btn btn-login">Login</button>
                     </div>
                 </form>
-                <a href="#" class="home__header__account">Already have an account?</a>
+                <a href="#" class="home__header__account" id="account">You dont Have an account</a>
             </div>
         </div>
     </header>
