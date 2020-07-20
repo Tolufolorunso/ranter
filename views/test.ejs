@@ -1,5 +1,10 @@
 <h1>
     Hello
 </h1>
-<a href="/users/logout" id="logout">logout</a>
+<p>
+    <%= userId %>
+</p>
+<form action="/users/logout" method="POST">
+    <button type="submit" id="logout">Logout</button>
+</form>
 <%- include('./partials/footer') %>

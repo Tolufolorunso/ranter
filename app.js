@@ -15,6 +15,7 @@ const globalErrorHandler = require("./controllers/errorController");
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/authRoutes");
+const newsfeedRouter = require("./routes/newsfeedRoute");
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.set("view engine", "ejs");
 app.use(
   sass({
     src: __dirname + "/sass",
-    dest: __dirname + "/public",
+    dest: __dirname + "/public/stylesheets",
     debug: true,
     outputStyle: "compressed",
     prefix: "/stylesheets",
@@ -36,11 +37,25 @@ app.use(
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "public")));
 
+// app.use(
+//   session({
+//     secret: "my secret",
+//     saveUninitialized: true,
+//     resave: false,
+//   })
+// );
+const IN_PROD = process.env.NODE_ENV === "production";
+const SESSNAME = "tolu";
 app.use(
   session({
-    secret: "my secret",
-    saveUninitialized: true,
+    name: SESSNAME,
     resave: false,
+    saveUninitialized: true,
+    secret: "my secret",
+    cookie: {
+      sameSite: true,
+      secure: IN_PROD,
+    },
   })
 );
 
@@ -55,6 +70,7 @@ app.use(cookieParser());
 
 app.use("/", indexRouter);
 app.use("/users", authRouter);
+app.use("/ranter", newsfeedRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

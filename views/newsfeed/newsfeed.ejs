@@ -1,0 +1,163 @@
+<%- include('../partials/header') %>
+    <main>
+        <section class="newsfeed">
+            <div class="container">
+                <div class="row">
+                    <div class="col s3">
+                        <div class="newsfeed__profile mb-m z-depth-1">
+                            <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
+                            <div>
+                                <h5 class="mt-m"><a href="#" class="white-text">Tolulope folorunso</a></h5>
+                                <a href="#" class="white-text">50 rants</a>
+                            </div>
+
+                        </div>
+                        <div class="my-newsfeed">
+                            <ul class="my-newsfeed__nav">
+                                <li>
+                                    <i class="material-icons">subway</i>
+                                    <div><a href="newsfeed.html">My Newsfeed</a></div>
+                                </li>
+                                <li>
+                                    <i class="material-icons">supervisor_account</i>
+                                    <div><a href="newsfeed.html">Comforters</a></div>
+                                </li>
+                                <li>
+                                    <i class="material-icons">message</i>
+                                    <div>
+                                        <a href="newsfeed.html">Messages</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="material-icons">images</i>
+                                    <div><a href="newsfeed.html">Images</a></div>
+                                </li>
+                                <li>
+                                    <i class="material-icons">video_library</i>
+                                    <div><a href="newsfeed.html">Videos</a></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="chatbox">
+                            <div class="chatbox__online">Chat Online</div>
+                            <ul class="chatbox__li">
+                                <li>
+                                    <a href="newsfeed-messages.html" title="Linda Lohan"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="Sophia Lee"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="John Doe"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="Alexis Clark"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="James Carter"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="Robert Cook"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="Richard Bell"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="Anna Young"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                                <li>
+                                    <a href="newsfeed-messages.html" title="Julia Cox"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col offset-s1 s8">
+                        <div class="create-post mb-m">
+                            <form action="/ranter/newsfeed" method="POST" class="form-tag">
+                                <div class="row">
+                                    <div class="col s7">
+                                        <div class="form-group text-image">
+                                            <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
+                                            <textarea name="message" id="rant-message" class="rant-message" cols="30" rows="10" placeholder="Rant as you like"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="tools">
+                                            <a href="#"><i class="material-icons">camera_alt</i></a>
+                                            <a href="#"><i class="material-icons">videocam</i></a>
+                                        </div>
+                                        <!-- <ul class="tool">
+                                            <li>
+                                                <a href="#"><i class="material-icons">camera</i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"> <i class="material-icons">video</i></a>
+                                            </li>
+                                        </ul> -->
+                                    </div>
+                                    <div class="col s2">
+                                        <div class="form-group btn-publish">
+                                            <button type="submit" class="btn btn-publish-btn">Publish</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="post-content">
+                            <img src="/public/images/bg-1.jpg" alt="post-image" class="responsive-img post-image">
+                            <div class="post-container">
+                                <img src="images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left">
+                                <div class="post-detail">
+                                    <div class="user-info">
+                                        <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span></h5>
+                                        <p class="text-muted">Published a photo about 3 mins ago</p>
+                                    </div>
+                                    <div class="reaction">
+                                        <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
+                                        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+                                    </div>
+                                    <div class="line-divider"></div>
+                                    <div class="post-text">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                                            anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                                    </div>
+                                    <div class="line-divider"></div>
+                                    <div class="post-comment">
+                                        <img src="images/users/user-11.jpg" alt="" class="profile-photo-sm">
+                                        <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                            enim ad minim veniam, quis nostrud </p>
+                                    </div>
+                                    <div class="post-comment">
+                                        <img src="images/users/user-4.jpg" alt="" class="profile-photo-sm">
+                                        <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                        </p>
+                                    </div>
+                                    <div class="post-comment">
+                                        <img src="images/users/user-1.jpg" alt="" class="profile-photo-sm">
+                                        <input type="text" class="form-control" placeholder="Post a comment">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col s2">
+                        <div class="suggestion">
+                            <h4 class="grey-text">Who to Follow</h4>
+                            <ul class="suggestion__follow mt-s">
+                                <li class="mb-s">
+                                    <a href="https://twitter.com/developer_tolu" target="_blank">@developer_tolu</a>
+                                </li>
+                                <li class="mb-s">
+                                    <a href="https://twitter.com/developer_tolu" target="_blank">@developer_tolu</a>
+                                </li>
+                                <li class="mb-s">
+                                    <a href="https://twitter.com/developer_tolu" target="_blank">@developer_tolu</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+    </main>

@@ -20,34 +20,36 @@ const accountSwitch = () => {
 };
 
 // hard reload from the server
-const logout = () => {
-  const logoutBtn = document.getElementById("logout");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", function (e) {
-      console.log("logout");
-      location.href("/");
-      // e.preventDefault();
-    });
-  }
-};
+// const logout = () => {
+//   const logoutBtn = document.getElementById("logout");
+//   if (logoutBtn) {
+//     logoutBtn.addEventListener("click", function (e) {
+//       console.log("logout");
+//       location.href("/");
+//       // e.preventDefault();
+//     });
+//   }
+// };
 
-logout();
-accountSwitch();
+// logout();
+// accountSwitch();
 
-// if (!logoutBtn) {
-//   console.log(logoutBtn);
-// } else {
-//   const logout = async () => {
-//     console.log(logoutBtn);
+const logoutBtn = document.getElementById("logout");
 
-//     await fetch("http://localhost:4000/users/logout", {
-//       method: "GET",
-//     })
-//       .then((e) => {
-//         console.log("hhhh");
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
-// }
+if (!logoutBtn) {
+  console.log(logoutBtn);
+} else {
+  const logout = async () => {
+    console.log(logoutBtn);
+
+    await fetch("http://localhost:4000/users/logout", {
+      method: "POST",
+    })
+      .then((e) => {
+        console.log("hhhh");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+}

@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please provide password"],
     trim: true,
   },
+  posts: {
+    type: Array,
+  },
   role: {
     type: String,
     required: true,
