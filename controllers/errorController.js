@@ -6,6 +6,8 @@ module.exports = (error, req, res, next) => {
       message: error.message,
     });
   } else if (error.statusCode === 500) {
+    console.log(error);
+
     return res.status(500).render("500", {
       message: error.message,
     });

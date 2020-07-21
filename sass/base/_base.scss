@@ -13,7 +13,7 @@ Author URI: http://tolufolorunso.herokuapp.com/
 
 html {
     font-size: 62.5%;
-    scroll-behavior: smooth;
+    // scroll-behavior: smooth;
 }
 
 body {
@@ -22,6 +22,12 @@ body {
     line-height: 1.7;
     color: #111;
     box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -72,7 +78,28 @@ p {
     line-height: 1.6;
 }
 
+.broken-image {
+    position: relative;
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.broken-image::after {
+    content: ""attr(alt) " not found";
+    display: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: dotted 1px #888;
+    padding: 10px 20px 10px 45px;
+    z-index: 4;
+    width: 100%;
+    min-width: 200px;
+}
+
 .container {
-    max-width: 120rem;
+    width: 80% !important;
     margin: 0 auto;
 }

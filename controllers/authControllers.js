@@ -97,13 +97,20 @@ exports.authorize = catchAsync(async (req, res, next) => {
 });
 
 exports.logoutUser = async (req, res, next) => {
+  console.log(res.cookie());
   try {
-    res.cookie("jwt", "loggedout", {
-      expires: new Date(Date.now() + 3 * 1000),
+    await res.cookie("jwt", "loggedout", {
+      expires: new Date(Date.now() + 1 * 1000),
       httpOnly: true,
     });
-    // .redirect("/");
-    res.redirect("/");
+    req.session.destroy((err) => {
+      if (err) {
+        return res.redirect("test");
+      }
+      res.clearCookie("tolu");
+      return res.redirect("/");
+    });
+    // return res.redirect("/");
   } catch (error) {
     console.log(error);
     res.render("error");
