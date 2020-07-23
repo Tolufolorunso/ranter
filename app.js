@@ -29,7 +29,7 @@ app.use(
   sass({
     src: __dirname + "/sass",
     dest: __dirname + "/public/stylesheets",
-    debug: true,
+    // debug: true,
     outputStyle: "compressed",
     prefix: "/stylesheets",
   })
@@ -45,13 +45,13 @@ app.use(express.static(path.join(__dirname, "public")));
 //   })
 // );
 const IN_PROD = process.env.NODE_ENV === "production";
-const SESSNAME = "tolu";
+const SESSNAME = "rant";
 app.use(
   session({
     name: SESSNAME,
     resave: false,
-    saveUninitialized: true,
-    secret: "my secret",
+    saveUninitialized: false,
+    secret: process.env.SESSION_SECRET,
     cookie: {
       sameSite: true,
       secure: IN_PROD,

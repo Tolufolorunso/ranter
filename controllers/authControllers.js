@@ -8,7 +8,7 @@ const session = require("express-session");
 
 exports.registerUser = catchAsync(async (req, res, next) => {
   if (req.cookies.jwt) {
-    res.redirect("/users/test");
+    res.redirect("/ranter/newsfeed");
   }
   const { password, passwordConfirm, name, email } = req.body;
   const userExist = await User.findOne({ email });
@@ -26,20 +26,24 @@ exports.registerUser = catchAsync(async (req, res, next) => {
 
 exports.loginUser = catchAsync(async (req, res, next) => {
   if (req.cookies.jwt) {
-    res.redirect("/users/test");
+    res.redirect("/ranter/newsfeed");
   }
   const { email, password } = req.body;
 
   if (!email || !password) {
-    req.flash("errorlogin", "All fields are required");
-    return res.status(401).redirect("/users/login");
+    return res.status(401).json({
+      status: "fail",
+      message: "All fields are required",
+    });
   }
 
   const user = await User.findOne({ email }).select("+password");
 
   if (!user || !(await user.correctPassword(password, user.password))) {
-    req.flash("errorlogin", "Incorrect email or password");
-    return res.status(401).redirect("/users/login");
+    return res.status(401).json({
+      status: "fail",
+      message: "Incorrect email or password",
+    });
   }
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -55,7 +59,15 @@ exports.loginUser = catchAsync(async (req, res, next) => {
 
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
   res.cookie("jwt", token, cookieOptions);
-  res.redirect("/users/test");
+  res.json({
+    user,
+  });
+  res.status(200).json({
+    status: "success",
+    user,
+    token,
+  });
+  // res.redirect("/ranter/newsfeed");
 });
 
 exports.authorize = catchAsync(async (req, res, next) => {
@@ -96,30 +108,47 @@ exports.authorize = catchAsync(async (req, res, next) => {
   next();
 });
 
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+  if (req.cookies.jwt) {
+    token = req.cookies.jwt;
+
+    const decodedToken = await promisify(jwt.verify)(
+      req.cookies.jwt,
+      process.env.JWT_SECRET
+    );
+
+    const currentUser = await User.findById(decodedToken.id);
+    if (!currentUser) {
+      return next();
+    }
+
+    if (currentUser.changedPasswordAfter(decodedToken.iat)) {
+      return next();
+    }
+    //Grant access to protected route
+    res.locals.user = currentUser;
+    return next();
+  }
+  next();
+});
+
 exports.logoutUser = async (req, res, next) => {
-  console.log(res.cookie());
   try {
+    await res.cookie("rant", "", { expires: new Date() });
+
     await res.cookie("jwt", "loggedout", {
-      expires: new Date(Date.now() + 1 * 1000),
+      expires: new Date(),
       httpOnly: true,
     });
-    req.session.destroy((err) => {
-      if (err) {
-        return res.redirect("test");
-      }
-      res.clearCookie("tolu");
-      return res.redirect("/");
-    });
-    // return res.redirect("/");
+    return res.status(200).json({ status: "success" });
   } catch (error) {
-    console.log(error);
-    res.render("error");
+    return res.render("error");
   }
 };
 
 exports.getLoginForm = async (req, res, next) => {
   if (req.cookies.jwt) {
-    return res.redirect("/users/test");
+    return res.redirect("/ranter/newsfeed");
   }
   res.render("auths/loginform", {
     error: req.flash("errorlogin"),

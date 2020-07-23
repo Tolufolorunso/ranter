@@ -5,6 +5,10 @@ Author URI: http://tolufolorunso.herokuapp.com/
 
 /* @import url(http://fonts.googleapis.com/css?family=Open + Sans:400, 700, 600); */
 
+:root {
+    --primaryC: #0p;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -48,6 +52,10 @@ h3 {
     margin: 0;
 }
 
+.mt-nav {
+    margin-top: 100px;
+}
+
 .mt-b {
     margin-top: 60px;
 }
@@ -87,7 +95,7 @@ p {
 }
 
 .broken-image::after {
-    content: ""attr(alt) " not found";
+    content: "" attr(alt) " not found";
     display: inherit;
     position: absolute;
     top: 0;
