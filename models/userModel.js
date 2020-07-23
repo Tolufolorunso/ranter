@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    default: "dsddddddd.jpq",
+  },
   email: {
     type: String,
     required: String,
@@ -19,9 +23,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide password"],
     trim: true,
-  },
-  posts: {
-    type: Array,
   },
   role: {
     type: String,

@@ -2,12 +2,16 @@
     <main>
         <section class="newsfeed">
             <div class="container">
-                <div class="row">
-                    <div class="col s3">
+                <div class="row mt-nav">
+                    <div class="col l3 m12">
                         <div class="newsfeed__profile mb-m z-depth-1">
                             <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
                             <div>
-                                <h5 class="mt-m"><a href="#" class="white-text">Tolulope folorunso</a></h5>
+                                <h5 class="mt-m">
+                                    <a href="#" class="white-text">
+                                        <%= user.name %>
+                                    </a>
+                                </h5>
                                 <a href="#" class="white-text">50 rants</a>
                             </div>
 
@@ -29,7 +33,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <i class="material-icons">images</i>
+                                    <i class="material-icons">image</i>
                                     <div><a href="newsfeed.html">Images</a></div>
                                 </li>
                                 <li>
@@ -71,20 +75,21 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col offset-s1 s8">
+                    <div class="col offset-l1 l8 m12">
                         <div class="create-post mb-m">
-                            <form action="/ranter/newsfeed" method="POST" class="form-tag">
+                            <form action="/ranter/newsfeed" method="POST" class="form-tag" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col s7">
                                         <div class="form-group text-image">
                                             <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
-                                            <textarea name="message" id="rant-message" class="rant-message" cols="30" rows="10" placeholder="Rant as you like"></textarea>
+                                            <textarea name="body" id="rant-message" class="rant-message" cols="30" rows="10" placeholder="Rant as you like"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col s2">
+                                    <div class="col s1">
                                         <div class="tools">
-                                            <a href="#"><i class="material-icons">camera_alt</i></a>
-                                            <a href="#"><i class="material-icons">videocam</i></a>
+                                            <label for="file-input"><i class="material-icons">camera_alt</i></label>
+                                            <input type="file" id="file-input" name="post_image">
+                                            <!-- <a href="#"><i class="material-icons">videocam</i></a> -->
                                         </div>
                                         <!-- <ul class="tool">
                                             <li>
@@ -104,42 +109,54 @@
                             </form>
                         </div>
                         <div class="post-content">
-                            <img src="/public/images/bg-1.jpg" alt="post-image" class="responsive-img post-image">
-                            <div class="post-container">
-                                <img src="images/users/user-5.jpg" alt="user" class="profile-photo-md pull-left">
-                                <div class="post-detail">
-                                    <div class="user-info">
-                                        <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span></h5>
-                                        <p class="text-muted">Published a photo about 3 mins ago</p>
+                            <img src="/public/uploads/post_image-1595360122222.png" alt="post-image" class="responsive-img post-image">
+                            <div class="post-detail">
+                                <div class="row">
+                                    <div class="col l2 m3 flex-c">
+                                        <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img post-img">
                                     </div>
-                                    <div class="reaction">
-                                        <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
-                                        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-                                    </div>
-                                    <div class="line-divider"></div>
-                                    <div class="post-text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                                            anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
-                                    </div>
-                                    <div class="line-divider"></div>
-                                    <div class="post-comment">
-                                        <img src="images/users/user-11.jpg" alt="" class="profile-photo-sm">
-                                        <p><a href="timeline.html" class="profile-link">Diana </a><i class="em em-laughing"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                            enim ad minim veniam, quis nostrud </p>
-                                    </div>
-                                    <div class="post-comment">
-                                        <img src="images/users/user-4.jpg" alt="" class="profile-photo-sm">
-                                        <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                        </p>
-                                    </div>
-                                    <div class="post-comment">
-                                        <img src="images/users/user-1.jpg" alt="" class="profile-photo-sm">
-                                        <input type="text" class="form-control" placeholder="Post a comment">
+                                    <div class="col l10 m9">
+                                        <div class="post-detail__user-info">
+                                            <h5><a href="timeline.html" class="profile-link">Tolulope</a> <span class="following">following</span></h5>
+                                            <p class="text-muted">Published a photo about 3 mins ago</p>
+                                            <div class="reaction right">
+                                                <!-- <a class="btn-floating white-text"><i class="material-icons">camera</i> 13</a> -->
+                                                <a class="white-text"><span class="badge white-text blue hoverable"><i class="fa fa-thumbs-down"></i> 0</span></a>
+                                                <a class="white-text"><span class="badge white-text blue hoverable"><i class="fa fa-thumbs-up"></i> 13</span></a>
+                                            </div>
+                                        </div>
+                                        <div class="divider"></div>
+                                        <div class="post-detail__post-text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                                mollit anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i><a href="#">more...</a></p>
+                                        </div>
+                                        <div class="divider"></div>
+                                        <div class="post-detail__post-comment mb-s">
+                                            <img src="/public/images/picture-136.png" alt="" class="broken-image circle responsive-img profile-image-s">
+                                            <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                                nostrud </p>
+                                        </div>
+                                        <div class="post-detail__post-comment mb-s">
+                                            <img src="/public/images/picture-136.png" alt="" class="broken-image circle responsive-img profile-image-s">
+                                            <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                                nostrud </p>
+                                        </div>
+                                        <div class="post-detail__post-comment mb-s">
+                                            <img src="/public/images/picture-136.png" alt="" class="broken-image circle responsive-img profile-image-s">
+                                            <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                                nostrud </p>
+                                        </div>
+                                        <div class="post-detail__post-comment mb-m">
+                                            <img src="/public/images/mary.jpg" alt="" class="broken-image circle responsive-img profile-image-s">
+                                            <input type="text" class="comment-form" placeholder="Post a comment">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                     <!-- <div class="col s2">
                         <div class="suggestion">
@@ -161,3 +178,24 @@
             </div>
         </section>
     </main>
+    <script src="/public/javascripts/ui.js">
+        // const logoutBtn = document.getElementById("logout");
+        // console.log(logoutBtn);
+        // if (!logoutBtn) {
+        //     console.log("kghdfsdghsja");
+        // } else {
+        //     logoutBtn.addEventListener("click", async function(e) {
+        //         await fetch("http://localhost:4000/users/logout", {
+        //                 method: "GET",
+        //             })
+        //             .then((data) => data.json())
+        //             .then((data) => {
+        //                 console.log(data.status)
+        //                 if (data.status == "success") location.reload(true);
+        //             })
+        //             .catch((error) => {
+        //                 console.log(error);
+        //             });
+        //     });
+        // }
+    </script>
