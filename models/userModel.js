@@ -6,18 +6,29 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    default: "dsddddddd.jpq",
+  avatar: {
+    type: Buffer,
   },
   email: {
     type: String,
-    required: String,
+    required: true,
+  },
+  aboutme: {
+    type: String,
+  },
+  gender: {
+    type: String,
+    require: true,
+  },
+  zip: {
+    type: Number,
+    require: true,
   },
   password: {
     type: String,
     required: true,
     min: 3,
+    select: false,
   },
   passwordConfirm: {
     type: String,
@@ -31,6 +42,13 @@ const userSchema = new mongoose.Schema({
   },
   passwordChangedAt: Date,
 });
+
+// userSchema.pre("save", async function (next) {
+
+//   this.image =
+
+//   next();
+// });
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();

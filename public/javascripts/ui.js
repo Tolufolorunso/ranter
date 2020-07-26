@@ -1,4 +1,4 @@
-const accountSwitch = () => {
+var accountSwitch = () => {
   const account = document.getElementById("account");
   if (account) {
     account.addEventListener("click", () => {
@@ -18,30 +18,15 @@ const accountSwitch = () => {
     });
   }
 };
-
-// hard reload from the server
-// const logout = () => {
-//   const logoutBtn = document.getElementById("logout");
-//   if (logoutBtn) {
-//     logoutBtn.addEventListener("click", function (e) {
-//       console.log("logout");
-//       location.href("/");
-//       // e.preventDefault();
-//     });
-//   }
-// };
-
-// logout();
 accountSwitch();
 
 // const logoutBtn = document.getElementById("logout");
-
-const logoutBtn = document.getElementById("logout");
+var logoutBtn = document.getElementById("logout");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async function (e) {
     e.preventDefault();
 
-    await fetch("http://localhost:4000/users/logout", {
+    await fetch("http://localhost:4000/logout", {
       method: "GET",
     })
       .then((data) => data.json())
@@ -53,10 +38,10 @@ if (logoutBtn) {
       });
   });
 }
-const form = document.getElementById("login-form");
+var form = document.getElementById("login-form");
 
-const login = async (data) => {
-  const loginResponse = await fetch("http://localhost:4000/users/login/", {
+var login = async (data) => {
+  const loginResponse = await fetch("http://localhost:4000/login/", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -91,14 +76,16 @@ if (form) {
       });
   });
 }
-const chatbox = document.querySelector(".chatbox");
+var chatbox = document.querySelector(".chatbox");
 
-window.addEventListener("scroll", function (e) {
-  console.log(window.pageYOffset);
-  if (window.pageYOffset > 446) {
-    chatbox.classList.add("is_stuck");
-  }
-  if (window.pageYOffset < 446) {
-    chatbox.classList.remove("is_stuck");
-  }
-});
+if (chatbox) {
+  window.addEventListener("scroll", function (e) {
+    // console.log(window.pageYOffset);
+    if (window.pageYOffset > 446) {
+      chatbox.classList.add("is_stuck");
+    }
+    if (window.pageYOffset < 446) {
+      chatbox.classList.remove("is_stuck");
+    }
+  });
+}

@@ -2,18 +2,22 @@
     <main>
         <section class="newsfeed">
             <div class="container">
-                <div class="row mt-nav">
+                <div class="row mt-m">
                     <div class="col l3 m12">
                         <div class="newsfeed__profile mb-m z-depth-1">
-                            <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
-                            <div>
-                                <h5 class="mt-m">
-                                    <a href="#" class="white-text">
-                                        <%= user.name %>
-                                    </a>
-                                </h5>
-                                <a href="#" class="white-text">50 rants</a>
-                            </div>
+                            <% if(typeof user.avatar === 'undefined') {%>
+                                <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
+                                <%}else{%>
+                                    <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="profile pic of tolu" class="broken-image circle responsive-img">
+                                    <%}%>
+                                        <div>
+                                            <h5 class="mt-m">
+                                                <a href="/users/profile" class="white-text">
+                                                    <%= user.name %>
+                                                </a>
+                                            </h5>
+                                            <a href="#" class="white-text">50 rants</a>
+                                        </div>
 
                         </div>
                         <div class="my-newsfeed">
@@ -81,8 +85,12 @@
                                 <div class="row">
                                     <div class="col s7">
                                         <div class="form-group text-image">
-                                            <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
-                                            <textarea name="body" id="rant-message" class="rant-message" cols="30" rows="10" placeholder="Rant as you like"></textarea>
+                                            <% if(typeof user.avatar === 'undefined') {%>
+                                                <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
+                                                <%} else{%>
+                                                    <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="profile pic of tolu" class="broken-image circle responsive-img">
+                                                    <%}%>
+                                                        <textarea name="body" id="rant-message" class="rant-message" cols="30" rows="10" placeholder="Rant as you like"></textarea>
                                         </div>
                                     </div>
                                     <div class="col s1">
@@ -113,7 +121,11 @@
                             <div class="post-detail">
                                 <div class="row">
                                     <div class="col l2 m3 flex-c">
-                                        <img src="/public/images/mary.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img post-img">
+                                        <% if(typeof user.avatar === 'undefined') {%>
+                                            <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img post-img">
+                                            <%} else{%>
+                                                <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="profile pic of tolu" class="broken-image circle responsive-img post-img">
+                                                <%}%>
                                     </div>
                                     <div class="col l10 m9">
                                         <div class="post-detail__user-info">
@@ -148,8 +160,12 @@
                                                 nostrud </p>
                                         </div>
                                         <div class="post-detail__post-comment mb-m">
-                                            <img src="/public/images/mary.jpg" alt="" class="broken-image circle responsive-img profile-image-s">
-                                            <input type="text" class="comment-form" placeholder="Post a comment">
+                                            <% if(typeof user.avatar === 'undefined') {%>
+                                                <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="" class="broken-image circle responsive-img profile-image-s">
+                                                <%}else{%>
+                                                    <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="" class="broken-image circle responsive-img profile-image-s">
+                                                    <%}%>
+                                                        <input type="text" class="comment-form" placeholder="Post a comment">
                                         </div>
                                     </div>
                                 </div>
@@ -178,24 +194,25 @@
             </div>
         </section>
     </main>
-    <script src="/public/javascripts/ui.js">
-        // const logoutBtn = document.getElementById("logout");
-        // console.log(logoutBtn);
-        // if (!logoutBtn) {
-        //     console.log("kghdfsdghsja");
-        // } else {
-        //     logoutBtn.addEventListener("click", async function(e) {
-        //         await fetch("http://localhost:4000/users/logout", {
-        //                 method: "GET",
-        //             })
-        //             .then((data) => data.json())
-        //             .then((data) => {
-        //                 console.log(data.status)
-        //                 if (data.status == "success") location.reload(true);
-        //             })
-        //             .catch((error) => {
-        //                 console.log(error);
-        //             });
-        //     });
-        // }
-    </script>
+    <%- include('../partials/footer') %>
+        <script src="/public/javascripts/ui.js">
+            // const logoutBtn = document.getElementById("logout");
+            // console.log(logoutBtn);
+            // if (!logoutBtn) {
+            //     console.log("kghdfsdghsja");
+            // } else {
+            //     logoutBtn.addEventListener("click", async function(e) {
+            //         await fetch("http://localhost:4000/users/logout", {
+            //                 method: "GET",
+            //             })
+            //             .then((data) => data.json())
+            //             .then((data) => {
+            //                 console.log(data.status)
+            //                 if (data.status == "success") location.reload(true);
+            //             })
+            //             .catch((error) => {
+            //                 console.log(error);
+            //             });
+            //     });
+            // }
+        </script>

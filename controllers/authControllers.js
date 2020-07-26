@@ -10,18 +10,26 @@ exports.registerUser = catchAsync(async (req, res, next) => {
   if (req.cookies.jwt) {
     res.redirect("/ranter/newsfeed");
   }
-  const { password, passwordConfirm, name, email } = req.body;
+
+  const { email, gender } = req.body;
   const userExist = await User.findOne({ email });
   if (userExist) {
-    return next(new Error("User is already exists", 400));
+    return next(new AppError("User is already exists", 400));
   }
   req.body.role = "user";
+  // if (gender === "male") {
+  //   req.body.avatar = "man.jpg";
+  // } else {
+  //   req.body.avatar = "woman.jpg";
+  // }
+  req.body.aboutme = "Welcome to ranter.com";
+
   const newUser = await User.create(req.body);
-  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
+  // const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+  //   expiresIn: process.env.JWT_EXPIRES_IN,
+  // });
   req.flash("success", "Registration is successful, please login");
-  res.status(201).redirect("/users/login");
+  res.status(201).redirect("/login");
 });
 
 exports.loginUser = catchAsync(async (req, res, next) => {
@@ -59,9 +67,6 @@ exports.loginUser = catchAsync(async (req, res, next) => {
 
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
   res.cookie("jwt", token, cookieOptions);
-  res.json({
-    user,
-  });
   res.status(200).json({
     status: "success",
     user,
