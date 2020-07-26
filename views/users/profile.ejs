@@ -1,0 +1,88 @@
+<%- include('../partials/header') %>
+    <style>
+
+    </style>
+    <section class="profile" id="profile">
+        <div class="container">
+            <div class="row mt-s">
+                <div class="col m12 l4 ">
+                    <div class="card center-align hoverable profile-card">
+                        <div class="card-image profile__card-image">
+                        </div>
+                        <div class="card-content profile__card-content">
+                            <% if(typeof user.avatar === 'undefined') { %>
+                                <img id="profile-pic" src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="mary" class="broken-image circle responsive-img profile__img">
+                                <% } else {%>
+                                    <img id="profile-pic" src="http://localhost:4000/users/<%= user.id %>/avatar" alt="mary" class="broken-image circle responsive-img profile__img">
+                                    <% } %>
+
+                                        <p>
+                                            <%= user.name %>
+                                        </p>
+                        </div>
+                        <div class="card-action">
+                            <input type="file" accept="image/*" id="avatar" class="change-avatar" name="avatar" value="avatar">
+                            <label for="avatar" class="btn blue"><i class="fa fa-upload"></i>Change Avatar</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m12 l8">
+                    <div class="profile-view center-align">
+                        <h1>Your Profile</h1>
+                        <div class="profile-edit">
+                            <form action="" class="form-tag">
+                                <div class="row">
+                                    <div class="col m6 s12">
+                                        <div class="form-group">
+                                            <label class="control-label">Name</label>
+                                            <input placeholder="First name" disabled="" name="firstname" type="text" value="<%= user.name %>">
+                                        </div>
+                                    </div>
+                                    <div class="col m6 s12">
+                                        <div class="form-group">
+                                            <label class="control-label">Email</label>
+                                            <input placeholder="First name" disabled="" name="firstname" type="text" value="<%= user.email %> ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col m12 l6">
+                                        <div class="form-group">
+                                            <label class="control-label">Zip</label>
+                                            <input placeholder="Zip" disabled="" name="zip" type="text" value="<%= user.zip %> ">
+                                        </div>
+                                    </div>
+                                    <div class="col m12 l6">
+                                        <div class="form-group">
+                                            <label class="control-label">Gender</label>
+                                            <input placeholder="Gender" disabled="" name="gender" type="text" value="<%= user.gender %> ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col l12">
+                                        <div class="form-group">
+                                            <label class="control-label">Bio</label>
+                                            <textarea name="Tolulope" id="" cols="50" rows="50" disabled=""><%= user.aboutme %> </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile-edit-btns">
+                                    <div class="form-group">
+                                        <input type="submit" value="Update" class="btn blue" name="zip">
+                                    </div>
+                                    <div class="form-group">
+                                        <button hidden class="btn blue" name="zip">Edit</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>

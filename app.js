@@ -15,6 +15,7 @@ const globalErrorHandler = require("./controllers/errorController");
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/userRoutes");
 const newsfeedRouter = require("./routes/newsfeedRoute");
 
 const app = express();
@@ -69,7 +70,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/", indexRouter);
-app.use("/users", authRouter);
+app.use(authRouter);
+app.use("/users", userRouter);
 app.use("/ranter", newsfeedRouter);
 
 // catch 404 and forward to error handler

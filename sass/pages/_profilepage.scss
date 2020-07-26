@@ -1,0 +1,112 @@
+.profile {
+    &-card {
+        border-radius: 5px;
+        .change-avatar {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+    }
+    &__img {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 55px;
+        left: 40px;
+        border: 5px solid #EEEEEE;
+        border-radius: 5px;
+    }
+    &__card-image {
+        height: 100px;
+        width: 100%;
+        background: url(/public/images/card-img.jpg);
+        background-size: cover;
+        background-position: 0px -45px;
+        background-repeat: no-repeat;
+        // border-radius: 5px;
+    }
+    &__card-content {
+        height: 170px;
+        p {
+            padding-top: 50px;
+        }
+    }
+    .profile-view {
+        border: 2px solid #f1f2f2;
+        background: #fff;
+        border-radius: 5px;
+    }
+    .profile-edit {
+        padding: 20px;
+        .form-tag {
+            display: block;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            label {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+                text-align: left;
+                font-weight: 500;
+            }
+        }
+        .form-tag input {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .form-tag input,
+        .form-tag textarea {
+            background-color: #f1f2f2;
+            font-size: 1.6rem;
+        }
+        .form-tag textarea {
+            height: 150px;
+        }
+    }
+}
+
+.profile-edit-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-edit-btns input[type="submit"] {
+    display: none;
+    outline: none;
+    border: none;
+    color: #fff;
+}
+
+input:not([type]):disabled,
+input:not([type])[readonly="readonly"],
+input[type=text]:not(.browser-default):disabled,
+input[type=text]:not(.browser-default)[readonly="readonly"],
+input[type=password]:not(.browser-default):disabled,
+input[type=password]:not(.browser-default)[readonly="readonly"],
+input[type=email]:not(.browser-default):disabled,
+input[type=email]:not(.browser-default)[readonly="readonly"],
+input[type=url]:not(.browser-default):disabled,
+input[type=url]:not(.browser-default)[readonly="readonly"],
+input[type=time]:not(.browser-default):disabled,
+input[type=time]:not(.browser-default)[readonly="readonly"],
+input[type=date]:not(.browser-default):disabled,
+input[type=date]:not(.browser-default)[readonly="readonly"],
+input[type=datetime]:not(.browser-default):disabled,
+input[type=datetime]:not(.browser-default)[readonly="readonly"],
+input[type=datetime-local]:not(.browser-default):disabled,
+input[type=datetime-local]:not(.browser-default)[readonly="readonly"],
+input[type=tel]:not(.browser-default):disabled,
+input[type=tel]:not(.browser-default)[readonly="readonly"],
+input[type=number]:not(.browser-default):disabled,
+input[type=number]:not(.browser-default)[readonly="readonly"],
+input[type=search]:not(.browser-default):disabled,
+input[type=search]:not(.browser-default)[readonly="readonly"],
+textarea.materialize-textarea:disabled,
+textarea.materialize-textarea[readonly="readonly"] {
+    color: rgba(0, 0, 0, 0.42);
+    border-bottom: none;
+}

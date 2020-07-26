@@ -4,9 +4,9 @@ const catchAsync = require("../middlewares/catchAsync");
 
 exports.getNewsfeed = catchAsync(async (req, res) => {
   const posts = await Post.find();
-  console.log(posts);
-  res.render("./newsfeed/newsfeed", { posts });
+  res.status(200).render("./newsfeed/newsfeed", { posts });
 });
+
 exports.postRant = catchAsync(async (req, res) => {
   req.body.author = res.locals.user._id;
 

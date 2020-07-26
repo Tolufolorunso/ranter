@@ -3,13 +3,28 @@
         <div class="container">
             <div class="home__header__form">
                 <h1>tolu</h1>
-                <form action="/users/register" method="POST" class="form-tag register-form" id="register-form">
+                <form action="/register" method="POST" class="form-tag register-form" id="register-form">
                     <div class="form-group">
                         <input type="text" placeholder="Enter Name" name="name">
                     </div>
                     <div class="form-group">
                         <input type="email" placeholder="Enter email" name="email">
                     </div>
+                    <div class="form-group">
+                        <input type="number" placeholder="Enter Zip Code" name="zip">
+                    </div>
+                    <p>
+                        <label>
+                            <input type="radio" class="with-gap" name="gender" value="male">
+                            <span>male</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" class="with-gap" name="gender" value="female">
+                            <span>Female</span>
+                        </label>
+                    </p>
                     <div class="form-group">
                         <input type="password" name="password" placeholder="Enter Password" name="password">
                     </div>

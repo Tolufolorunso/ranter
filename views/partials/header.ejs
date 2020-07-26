@@ -19,52 +19,37 @@
 
 <body>
 
-    <nav class="nav nav-wrapper black mb-m">
-        <div class="container">
-            <a href="#" class="brand-logo">Photo Ninja</a>
-            <a href="" class="sidenav-trigger right" data-target="mobile-menu">
-                <i class="material-icons">menu</i>
-            </a>
-            <!-- <form class="">
-                <div class="form-group">
-                    <i class=""></i>
-                    <input type="text" class="form-control" placeholder="Search friends, photos, videos">
+    <div class="navbar-fixed">
+        <nav class="nav nav-wrapper black">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo left">Ranter</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/ranter/newsfeed">NewsFeed</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <% if(locals.user) { %>
+                            <li id="logout"><a href="#">logout</a></li>
+                            <%  }else{ %>
+                                <li>
+                                    <a href="/users/login">login</a>
+                                </li>
+                                <% } %>
+                    </ul>
                 </div>
-            </form> -->
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#photo">Home</a></li>
-                <li>
-                    <a href="#services">NewsFeed</a>
-                </li>
-                <li><a href="#contact">Contact</a></li>
-                <% if(locals.user) { %>
-                    <li id="logout"><a href="#">logout</a></li>
-                    <%  }else{ %>
-                        <li>
-                            <a href="/users/login">login</a>
-                        </li>
-                        <% } %>
-
-            </ul>
-    </nav>
-
-    <!-- <ul class="sidenav grey lighten-2" id="mobile-menu">
-        <li><a href="#">Photo</a></li>
-        <li><a href="#">services</a></li>
+            </div>
+        </nav>
+    </div>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">NewsFeed</a></li>
         <li><a href="#">Contact</a></li>
-        <li>
-            <a href="#" class="btn-floating btn-small indigo darken-4">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="btn-floating btn-small indigo darken-4">
-                <i class="fab fa-facebook"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="btn-floating btn-small indigo darken-4">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-    </ul> -->
+        <% if(locals.user) { %>
+            <li id="logout"><a href="#">logout</a></li>
+            <%  }else{ %>
+                <li>
+                    <a href="/users/login">login</a>
+                </li>
+                <% } %>
+    </ul>
