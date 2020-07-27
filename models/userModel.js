@@ -43,13 +43,6 @@ const userSchema = new mongoose.Schema({
   passwordChangedAt: Date,
 });
 
-// userSchema.pre("save", async function (next) {
-
-//   this.image =
-
-//   next();
-// });
-
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 

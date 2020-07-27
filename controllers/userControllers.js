@@ -10,6 +10,22 @@ exports.getUserProfile = catchAsync(async (req, res) => {
   res.render("./users/profile", { user });
 });
 
+exports.updateUserProfile = catchAsync(async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.body.userId, req.body);
+  console.log(user);
+
+  res.status(200).json({
+    status: "success",
+    message: "Your profile updated successfully",
+    data: {
+      user: user,
+    },
+  });
+  // const user = res.locals.user;
+  // const img = await User.findById(user._id);
+  // res.render("./users/profile", { user });
+});
+
 exports.updateAvatar = catchAsync(async (req, res) => {
   const buffer = await sharp(req.file.buffer).resize(150, 200).png().toBuffer();
 

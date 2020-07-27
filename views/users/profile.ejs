@@ -17,10 +17,11 @@
                                     <% } %>
 
                                         <p>
-                                            <%= user.name %>
+                                            <%= user.name %> <br>
+                                                <span>quotes here</span>
                                         </p>
                         </div>
-                        <div class="card-action">
+                        <div class="card-action profile__card-action">
                             <input type="file" accept="image/*" id="avatar" class="change-avatar" name="avatar" value="avatar">
                             <label for="avatar" class="btn blue"><i class="fa fa-upload"></i>Change Avatar</label>
                         </div>
@@ -30,12 +31,12 @@
                     <div class="profile-view center-align">
                         <h1>Your Profile</h1>
                         <div class="profile-edit">
-                            <form action="" class="form-tag">
+                            <form class="form-tag" id="form">
                                 <div class="row">
                                     <div class="col m6 s12">
                                         <div class="form-group">
-                                            <label class="control-label">Name</label>
-                                            <input placeholder="First name" disabled="" name="firstname" type="text" value="<%= user.name %>">
+                                            <label class="control-label" for="name">Name</label>
+                                            <input placeholder="First name" disabled="" name="firstname" type="text" value="<%= user.name %>" id="name">
                                         </div>
                                     </div>
                                     <div class="col m6 s12">
@@ -48,31 +49,33 @@
                                 <div class="row">
                                     <div class="col m12 l6">
                                         <div class="form-group">
-                                            <label class="control-label">Zip</label>
-                                            <input placeholder="Zip" disabled="" name="zip" type="text" value="<%= user.zip %> ">
+                                            <label class="control-label" for="zip">Zip</label>
+                                            <input placeholder="Zip" disabled="" name="zip" type="text" value="<%= user.zip %>" id="zip">
                                         </div>
                                     </div>
                                     <div class="col m12 l6">
                                         <div class="form-group">
-                                            <label class="control-label">Gender</label>
-                                            <input placeholder="Gender" disabled="" name="gender" type="text" value="<%= user.gender %> ">
+                                            <label class="control-label" for="gender">Gender</label>
+                                            <input placeholder="Gender" disabled="" name="gender" type="text" value="<%= user.gender %>" id="gender">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col l12">
                                         <div class="form-group">
-                                            <label class="control-label">Bio</label>
-                                            <textarea name="Tolulope" id="" cols="50" rows="50" disabled=""><%= user.aboutme %> </textarea>
+                                            <label class="control-label" for="bio">Bio</label>
+                                            <textarea name="Tolulope" id="bio" class="bio" cols="50" rows="50" disabled=""><%= user.aboutme %></textarea>
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" value="<%= user._id %>" class="btn blue" id="user-id">
                                 <div class="profile-edit-btns">
                                     <div class="form-group">
-                                        <input type="submit" value="Update" class="btn blue" name="zip">
+                                        <input type="submit" value="Update" class="btn blue" id="submitBtn">
                                     </div>
                                     <div class="form-group">
-                                        <button hidden class="btn blue" name="zip">Edit</button>
+                                        <button class="btn blue cancel" id="edit">Edit</button>
+                                        <button class="btn blue cancel" id="cancel" style="display: none;">Cancel</button>
                                     </div>
                                 </div>
 

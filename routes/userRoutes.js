@@ -9,6 +9,7 @@ router.use(authController.authorize);
 
 /* GET users listing. */
 router.get("/profile", userControllers.getUserProfile);
+router.patch("/me/profile", userControllers.updateUserProfile);
 router.get("/:id/avatar", userControllers.getAvatar);
 
 //Upload profile avatar
