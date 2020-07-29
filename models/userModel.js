@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
   },
   aboutme: {
     type: String,
+    default: "Welcome to ranter.com",
   },
   gender: {
     type: String,

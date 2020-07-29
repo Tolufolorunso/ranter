@@ -8,11 +8,9 @@ router.get("/", function (req, res, next) {
   }
   res.render("index", { title: "Express", message: req.flash("message") });
 });
-router.get("/re", function (req, res, next) {
-  res.set("Content-Type", "text/plain");
-  var s = "";
-  for (var name in req.headers) s += name + ": " + req.headers[name] + "\n";
-  res.send(s);
-});
+
+// router.get("/500", function (req, res, next) {
+//   res.render("500");
+// });
 
 module.exports = router;

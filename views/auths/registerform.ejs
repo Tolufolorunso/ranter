@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+    <%= typeof errorMessage !== 'undefined' ?
+errorMessage : '' %>
+        <div class="container">
+            <form action="/register" method="POST" style="display: block;" class="form-tag register-form" id="register-form" novalidate>
+                <div class="form-group">
+                    <input type="text" placeholder="Enter Name" name="name" value="<%= typeof name !== 'undefined' ? name : '' %>" class="<%= errorsValidation.find(e => e.param === 'name') ? 'invalid' : '' %>" />
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Enter email" name="email" value="<%= typeof email !== 'undefined' ? email : '' %>" class="<%= errorsValidation.find(e => e.param === 'email') ? 'invalid' : '' %>" />
+                </div>
+                <div class="form-group">
+                    <input type="number" placeholder="Enter Zip Code" name="zip" value="<%= typeof zip !== 'undefined' ? zip : '' %>" class="<%= errorsValidation.find(e => e.param === 'zip') ? 'invalid' : '' %>" />
+                </div>
+                <p>
+                    <label>
+        <input type="radio" class="with-gap" name="gender" value="male" />
+        <span>male</span>
+      </label>
+                </p>
+                <p>
+                    <label>
+        <input type="radio" class="with-gap" name="gender" value="female" />
+        <span>Female</span>
+      </label>
+                </p>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Enter Password" name="password" value="<%= typeof password !== 'undefined' ? password : '' %>" class="<%= errorsValidation.find(e => e.param === 'password') ? 'invalid' : '' %>" />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="passwordConfirm" placeholder="Confirm password" name="passwordConfirm" class="<%= errorsValidation.find(e => e.param === 'passwordConfirm') ? 'invalid' : '' %>" />
+                </div>
+                <p><small>By signing up you agree to the terms</small></p>
+                <div class="form-group form-tag__btn">
+                    <button type="submit" class="btn btn-login">Signup</button>
+                </div>
+            </form>
+        </div>
+
+        <%= errorsValidation.forEach(e => e) %>
+            <%- include('../partials/footer') %>

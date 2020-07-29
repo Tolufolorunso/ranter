@@ -87,7 +87,7 @@ const updateProfile = (() => {
         console.log("result is", data);
       })
       .catch((error) => {
-        console.log("error is", error.message);
+        location.href = "/500";
       });
   };
 

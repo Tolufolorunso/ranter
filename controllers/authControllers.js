@@ -5,6 +5,17 @@ const AppError = require("../middlewares/appError");
 const catchAsync = require("../middlewares/catchAsync");
 const { promisify } = require("util");
 const session = require("express-session");
+const { validationResult } = require("express-validator");
+
+exports.getRegisterForm = async (req, res, next) => {
+  if (req.cookies.jwt) {
+    return res.redirect("/ranter/newsfeed");
+  }
+  res.render("auths/registerform", {
+    message: "tolulope",
+    errorsValidation: [],
+  });
+};
 
 exports.registerUser = catchAsync(async (req, res, next) => {
   if (req.cookies.jwt) {
@@ -12,17 +23,25 @@ exports.registerUser = catchAsync(async (req, res, next) => {
   }
 
   const { email, gender } = req.body;
-  const userExist = await User.findOne({ email });
-  if (userExist) {
-    return next(new AppError("User is already exists", 400));
-  }
-  req.body.role = "user";
-  // if (gender === "male") {
-  //   req.body.avatar = "man.jpg";
-  // } else {
-  //   req.body.avatar = "woman.jpg";
+  // const userExist = await User.findOne({ email });
+  // if (userExist) {
+  //   return next(new AppError("User is already exists", 400));
   // }
-  req.body.aboutme = "Welcome to ranter.com";
+  req.body.role = "user";
+  console.log(req.body);
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).render("auths/registerform", {
+      errorMessage: errors.array()[0].msg,
+      errorsValidation: errors.array(),
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      gender: req.body.password,
+      zip: req.body.zip,
+    });
+  }
 
   const newUser = await User.create(req.body);
   // const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
@@ -32,11 +51,28 @@ exports.registerUser = catchAsync(async (req, res, next) => {
   res.status(201).redirect("/login");
 });
 
+exports.getLoginForm = async (req, res, next) => {
+  if (req.cookies.jwt) {
+    return res.redirect("/ranter/newsfeed");
+  }
+  res.render("auths/loginform", {
+    error: req.flash("errorlogin"),
+    success: req.flash("success"),
+    errorMessage: "",
+  });
+};
+
 exports.loginUser = catchAsync(async (req, res, next) => {
   if (req.cookies.jwt) {
     res.redirect("/ranter/newsfeed");
   }
   const { email, password } = req.body;
+  // const errors = validationResult(req);
+  // if (!error.isEmpty()) {
+  //   return res.status(422).render("auths/registerform", {
+  //     errorMessage: errors.array()[0].msg,
+  //   });
+  // }
 
   if (!email || !password) {
     return res.status(401).json({
@@ -87,9 +123,8 @@ exports.authorize = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    req.flash("message", "Working now");
+    req.flash("message", "You are not loggedin, please log in");
     return res.redirect("/");
-    // return next(new AppError("You are not login, please log in", 401));
   }
 
   const decodedToken = await promisify(jwt.verify)(
@@ -149,16 +184,6 @@ exports.logoutUser = async (req, res, next) => {
   } catch (error) {
     return res.render("error");
   }
-};
-
-exports.getLoginForm = async (req, res, next) => {
-  if (req.cookies.jwt) {
-    return res.redirect("/ranter/newsfeed");
-  }
-  res.render("auths/loginform", {
-    error: req.flash("errorlogin"),
-    success: req.flash("success"),
-  });
 };
 
 exports.authorizeFor = (...roles) => {

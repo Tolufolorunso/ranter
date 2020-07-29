@@ -6,12 +6,25 @@ const sharp = require("sharp");
 
 exports.getUserProfile = catchAsync(async (req, res) => {
   const user = res.locals.user;
-  const img = await User.findById(user._id);
+  console.log(user);
+  if (!user) {
+    req.flash("message", "Please login to view your profile");
+    return res.render("index");
+  }
+  // const img = await User.findById(user._id);
   res.render("./users/profile", { user });
 });
 
-exports.updateUserProfile = catchAsync(async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.body.userId, req.body);
+exports.updateUserProfile = catchAsync(async (req, res, next) => {
+  // req.body.userId
+  const user = await User.findByIdAndUpdate(
+    "5f1de5deeb71de2bd8c523ba",
+    req.body
+  );
+  if (!user) {
+    return next(new Error("The user doesnt exists", 401));
+  }
+
   console.log(user);
 
   res.status(200).json({

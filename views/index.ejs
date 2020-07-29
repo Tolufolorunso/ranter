@@ -1,68 +1,69 @@
 <%- include('partials/header') %>
-    <header class="home__header">
-        <div class="container">
-            <div class="home__header__form">
-                <h1>tolu</h1>
-                <form action="/register" method="POST" class="form-tag register-form" id="register-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Enter Name" name="name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Enter email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <input type="number" placeholder="Enter Zip Code" name="zip">
-                    </div>
-                    <p>
-                        <label>
+    <%= message %>
+        <header class="home__header">
+            <div class="container">
+                <div class="home__header__form">
+                    <h1>tolu</h1>
+                    <form action="/register" method="POST" class="form-tag register-form" id="register-form" novalidate>
+                        <div class="form-group">
+                            <input type="text" placeholder="Enter Name" name="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Enter Zip Code" name="zip">
+                        </div>
+                        <p>
+                            <label>
                             <input type="radio" class="with-gap" name="gender" value="male">
                             <span>male</span>
                         </label>
-                    </p>
-                    <p>
-                        <label>
+                        </p>
+                        <p>
+                            <label>
                             <input type="radio" class="with-gap" name="gender" value="female">
                             <span>Female</span>
                         </label>
-                    </p>
-                    <div class="form-group">
-                        <input type="password" name="password" placeholder="Enter Password" name="password">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="passwordConfirm" placeholder="Confirm password" name="passwordConfirm">
-                    </div>
-                    <p><small>By signing up you agree to the terms</small></p>
-                    <div class="form-group form-tag__btn">
-                        <button type="submit" class="btn btn-login">Signup</button>
-                    </div>
+                        </p>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Enter Password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="passwordConfirm" placeholder="Confirm password" name="passwordConfirm">
+                        </div>
+                        <p><small>By signing up you agree to the terms</small></p>
+                        <div class="form-group form-tag__btn">
+                            <button type="submit" class="btn btn-login">Signup</button>
+                        </div>
 
-                </form>
-                <form method="POST" class="form-tag login-form active" id="login-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Enter email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" placeholder="Enter Password">
-                    </div>
-                    <p><small>By signing up you agree to the terms</small></p>
-                    <div class="form-group form-tag__btn">
-                        <button type="submit" class="btn btn-login">Login</button>
-                    </div>
-                </form>
-                <a href="#" class="home__header__account" id="account">You dont Have an account</a>
+                    </form>
+                    <form method="POST" class="form-tag login-form active" id="login-form" novalidate>
+                        <div class="form-group">
+                            <input type="text" placeholder="Enter email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Enter Password">
+                        </div>
+                        <p><small>By signing up you agree to the terms</small></p>
+                        <div class="form-group form-tag__btn">
+                            <button type="submit" class="btn btn-login">Login</button>
+                        </div>
+                    </form>
+                    <a href="#" class="home__header__account" id="account">You dont Have an account</a>
+                </div>
             </div>
-        </div>
-    </header>
-    <section class="features">
-        <div class="container">
-            <h1>Time to start</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem eos accusantium, sit sapiente, laudantium maiores saepe aperiam atque non magnam explicabo nam dolorum maxime dignissimos est in officia quos consequuntur accusamus velit
-                ipsum similique temporibus. Nulla harum suscipit cupiditate eius?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem eos accusantium, sit sapiente, laudantium maiores saepe aperiam atque non magnam explicabo nam dolorum maxime dignissimos est in officia quos consequuntur accusamus velit
-                ipsum similique temporibus. Nulla harum suscipit cupiditate eius?</p>
-        </div>
-    </section>
+        </header>
+        <section class="features">
+            <div class="container">
+                <h1>Time to start</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem eos accusantium, sit sapiente, laudantium maiores saepe aperiam atque non magnam explicabo nam dolorum maxime dignissimos est in officia quos consequuntur accusamus
+                    velit ipsum similique temporibus. Nulla harum suscipit cupiditate eius?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem eos accusantium, sit sapiente, laudantium maiores saepe aperiam atque non magnam explicabo nam dolorum maxime dignissimos est in officia quos consequuntur accusamus
+                    velit ipsum similique temporibus. Nulla harum suscipit cupiditate eius?</p>
+            </div>
+        </section>
 
 
 
-    <%- include('partials/footer') %>
+        <%- include('partials/footer') %>
