@@ -1,218 +1,351 @@
 <%- include('../partials/header') %>
-    <main>
-        <section class="newsfeed">
-            <div class="container">
-                <div class="row mt-m">
-                    <div class="col l3 m12">
-                        <div class="newsfeed__profile mb-m z-depth-1">
-                            <% if(typeof user.avatar === 'undefined') {%>
-                                <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
-                                <%}else{%>
-                                    <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="profile pic of tolu" class="broken-image circle responsive-img">
-                                    <%}%>
-                                        <div>
-                                            <h5 class="mt-m">
-                                                <a href="/users/profile" class="white-text">
-                                                    <%= user.name %>
-                                                </a>
-                                            </h5>
-                                            <a href="#" class="white-text">50 rants</a>
-                                        </div>
-
-                        </div>
-                        <div class="my-newsfeed">
-                            <ul class="my-newsfeed__nav">
-                                <li>
-                                    <i class="material-icons">subway</i>
-                                    <div><a href="newsfeed.html">My Newsfeed</a></div>
-                                </li>
-                                <li>
-                                    <i class="material-icons">supervisor_account</i>
-                                    <div><a href="newsfeed.html">Comforters</a></div>
-                                </li>
-                                <li>
-                                    <i class="material-icons">message</i>
-                                    <div>
-                                        <a href="newsfeed.html">Messages</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="material-icons">image</i>
-                                    <div><a href="newsfeed.html">Images</a></div>
-                                </li>
-                                <li>
-                                    <i class="material-icons">video_library</i>
-                                    <div><a href="newsfeed.html">Videos</a></div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="chatbox">
-                            <div class="chatbox__online">Chat Online</div>
-                            <ul class="chatbox__li">
-                                <li>
-                                    <a href="newsfeed-messages.html" title="Linda Lohan"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="Sophia Lee"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="John Doe"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="Alexis Clark"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="James Carter"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="Robert Cook"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="Richard Bell"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="Anna Young"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                                <li>
-                                    <a href="newsfeed-messages.html" title="Julia Cox"><img src="/public/images/mary.jpg" alt="user" class="img-responsive profile-photo" class="broken-image circle responsive-img"><span class="online-dot"></span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col offset-l1 l8 m12">
-                        <div class="create-post mb-m">
-                            <form action="/ranter/newsfeed" method="POST" class="form-tag" enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col s7">
-                                        <div class="form-group text-image">
-                                            <% if(typeof user.avatar === 'undefined') {%>
-                                                <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img">
-                                                <%} else{%>
-                                                    <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="profile pic of tolu" class="broken-image circle responsive-img">
-                                                    <%}%>
-                                                        <textarea name="body" id="rant-message" class="rant-message" cols="30" rows="10" placeholder="Rant as you like"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col s1">
-                                        <div class="tools">
-                                            <label for="file-input"><i class="material-icons">camera_alt</i></label>
-                                            <input type="file" id="file-input" name="post_image">
-                                            <!-- <a href="#"><i class="material-icons">videocam</i></a> -->
-                                        </div>
-                                        <!-- <ul class="tool">
-                                            <li>
-                                                <a href="#"><i class="material-icons">camera</i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="material-icons">video</i></a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                    <div class="col s2">
-                                        <div class="form-group btn-publish">
-                                            <button type="submit" class="btn btn-publish-btn">Publish</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="post-content">
-                            <img src="/public/uploads/post_image-1595360122222.png" alt="post-image" class="responsive-img post-image">
-                            <div class="post-detail">
-                                <div class="row">
-                                    <div class="col l2 m3 flex-c">
-                                        <% if(typeof user.avatar === 'undefined') {%>
-                                            <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="profile pic of tolu" class="broken-image circle responsive-img post-img">
-                                            <%} else{%>
-                                                <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="profile pic of tolu" class="broken-image circle responsive-img post-img">
-                                                <%}%>
-                                    </div>
-                                    <div class="col l10 m9">
-                                        <div class="post-detail__user-info">
-                                            <h5><a href="timeline.html" class="profile-link">Tolulope</a> <span class="following">following</span></h5>
-                                            <p class="text-muted">Published a photo about 3 mins ago</p>
-                                            <div class="reaction right">
-                                                <!-- <a class="btn-floating white-text"><i class="material-icons">camera</i> 13</a> -->
-                                                <a class="white-text"><span class="badge white-text blue hoverable"><i class="fa fa-thumbs-down"></i> 0</span></a>
-                                                <a class="white-text"><span class="badge white-text blue hoverable"><i class="fa fa-thumbs-up"></i> 13</span></a>
-                                            </div>
-                                        </div>
-                                        <div class="divider"></div>
-                                        <div class="post-detail__post-text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                                mollit anim id est laborum. <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i><a href="#">more...</a></p>
-                                        </div>
-                                        <div class="divider"></div>
-                                        <div class="post-detail__post-comment mb-s">
-                                            <img src="/public/images/picture-136.png" alt="" class="broken-image circle responsive-img profile-image-s">
-                                            <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud </p>
-                                        </div>
-                                        <div class="post-detail__post-comment mb-s">
-                                            <img src="/public/images/picture-136.png" alt="" class="broken-image circle responsive-img profile-image-s">
-                                            <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud </p>
-                                        </div>
-                                        <div class="post-detail__post-comment mb-s">
-                                            <img src="/public/images/picture-136.png" alt="" class="broken-image circle responsive-img profile-image-s">
-                                            <p><a href="timeline.html" class="profile-link">John</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud </p>
-                                        </div>
-                                        <div class="post-detail__post-comment mb-m">
-                                            <% if(typeof user.avatar === 'undefined') {%>
-                                                <img src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg" alt="" class="broken-image circle responsive-img profile-image-s">
-                                                <%}else{%>
-                                                    <img src="http://localhost:4000/users/<%= user.id %>/avatar" alt="" class="broken-image circle responsive-img profile-image-s">
-                                                    <%}%>
-                                                        <input type="text" class="comment-form" placeholder="Post a comment">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <!-- <div class="col s2">
-                        <div class="suggestion">
-                            <h4 class="grey-text">Who to Follow</h4>
-                            <ul class="suggestion__follow mt-s">
-                                <li class="mb-s">
-                                    <a href="https://twitter.com/developer_tolu" target="_blank">@developer_tolu</a>
-                                </li>
-                                <li class="mb-s">
-                                    <a href="https://twitter.com/developer_tolu" target="_blank">@developer_tolu</a>
-                                </li>
-                                <li class="mb-s">
-                                    <a href="https://twitter.com/developer_tolu" target="_blank">@developer_tolu</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-        </section>
-    </main>
-    <%- include('../partials/footer') %>
-        <script src="/public/javascripts/ui.js">
-            // const logoutBtn = document.getElementById("logout");
-            // console.log(logoutBtn);
-            // if (!logoutBtn) {
-            //     console.log("kghdfsdghsja");
-            // } else {
-            //     logoutBtn.addEventListener("click", async function(e) {
-            //         await fetch("http://localhost:4000/users/logout", {
-            //                 method: "GET",
-            //             })
-            //             .then((data) => data.json())
-            //             .then((data) => {
-            //                 console.log(data.status)
-            //                 if (data.status == "success") location.reload(true);
-            //             })
-            //             .catch((error) => {
-            //                 console.log(error);
-            //             });
-            //     });
-            // }
-        </script>
+<main>
+	<section class="newsfeed">
+		<div class="container">
+			<div class="row mt-m">
+				<div class="col l3 m12">
+					<div class="newsfeed__profile mb-m z-depth-1">
+						<% if(typeof user.avatar === 'undefined') {%>
+						<img
+							src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg"
+							alt="profile pic of tolu"
+							class="broken-image circle responsive-img"
+						/>
+						<%}else{%>
+						<img
+							src="http://localhost:4000/users/<%= user.id %>/avatar"
+							alt="profile pic of tolu"
+							class="broken-image circle responsive-img"
+						/>
+						<%}%>
+						<div>
+							<h5 class="mt-m">
+								<a href="/users/profile" class="white-text">
+									<%= user.name %>
+								</a>
+							</h5>
+							<a href="#" class="white-text">50 rants</a>
+						</div>
+					</div>
+					<div class="my-newsfeed">
+						<ul class="my-newsfeed__nav">
+							<li>
+								<i class="material-icons">subway</i>
+								<div><a href="newsfeed.html">My Newsfeed</a></div>
+							</li>
+							<li>
+								<i class="material-icons">supervisor_account</i>
+								<div><a href="newsfeed.html">Comforters</a></div>
+							</li>
+							<li>
+								<i class="material-icons">message</i>
+								<div><a href="newsfeed.html">Messages</a></div>
+							</li>
+							<li>
+								<i class="material-icons">image</i>
+								<div><a href="newsfeed.html">Images</a></div>
+							</li>
+							<li>
+								<i class="material-icons">video_library</i>
+								<div><a href="newsfeed.html">Videos</a></div>
+							</li>
+						</ul>
+					</div>
+					<div class="chatbox">
+						<div class="chatbox__online">Chat Online</div>
+						<ul class="chatbox__li">
+							<li>
+								<a href="newsfeed-messages.html" title="Linda Lohan">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="Sophia Lee">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="John Doe">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="Alexis Clark">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="James Carter">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="Robert Cook">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="Richard Bell">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="Anna Young">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+							<li>
+								<a href="newsfeed-messages.html" title="Julia Cox">
+									<img
+										src="/public/images/mary.jpg"
+										alt="user"
+										class="img-responsive profile-photo"
+										class="broken-image circle responsive-img"
+									/>
+									<span class="online-dot"></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col offset-l1 l8 m12">
+					<div class="create-post mb-m">
+						<form
+							action="/ranter/newsfeed"
+							method="POST"
+							class="form-tag"
+							enctype="multipart/form-data"
+						>
+							<div class="row">
+								<div class="col s7">
+									<div class="form-group text-image">
+										<% if(typeof user.avatar === 'undefined') {%>
+										<img
+											src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg"
+											alt="profile pic of tolu"
+											class="broken-image circle responsive-img"
+										/>
+										<%} else{%>
+										<img
+											src="http://localhost:4000/users/<%= user.id %>/avatar"
+											alt="profile pic of tolu"
+											class="broken-image circle responsive-img"
+										/>
+										<%}%>
+										<textarea
+											name="body"
+											id="rant-message"
+											class="rant-message"
+											cols="30"
+											rows="10"
+											placeholder="Rant as you like"
+										></textarea>
+									</div>
+								</div>
+								<div class="col s1">
+									<div class="tools">
+										<label for="file-input">
+											<i class="material-icons">camera_alt</i>
+										</label>
+										<input type="file" id="file-input" name="post_image" />
+										<!-- <a href="#"><i class="material-icons">videocam</i></a> -->
+									</div>
+								</div>
+								<div class="col s2">
+									<div class="form-group btn-publish">
+										<button type="submit" class="btn btn-publish-btn">
+											Publish
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="post-content">
+						<img
+							src="/public/uploads/post_image-1595360122222.png"
+							alt="post-image"
+							class="responsive-img post-image"
+						/>
+						<div class="post-detail">
+							<div class="row">
+								<div class="col l2 m3 flex-c">
+									<% if(typeof user.avatar === 'undefined') {%>
+									<img
+										src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg"
+										alt="profile pic of tolu"
+										class="broken-image circle responsive-img post-img"
+									/>
+									<%} else{%>
+									<img
+										src="http://localhost:4000/users/<%= user.id %>/avatar"
+										alt="profile pic of tolu"
+										class="broken-image circle responsive-img post-img"
+									/>
+									<%}%>
+								</div>
+								<div class="col l10 m9">
+									<div class="post-detail__user-info">
+										<h5>
+											<a href="timeline.html" class="profile-link">
+												Tolulope
+											</a>
+											<span class="following">following</span>
+										</h5>
+										<p class="text-muted">
+											Published a photo about 3 mins ago
+										</p>
+										<div class="reaction right">
+											<!-- <a class="btn-floating white-text"><i class="material-icons">camera</i> 13</a> -->
+											<a class="white-text">
+												<span class="badge white-text blue hoverable">
+													<i class="fa fa-thumbs-down"></i>
+													0
+												</span>
+											</a>
+											<a class="white-text">
+												<span class="badge white-text blue hoverable">
+													<i class="fa fa-thumbs-up"></i>
+													13
+												</span>
+											</a>
+										</div>
+									</div>
+									<div class="divider"></div>
+									<div class="post-detail__post-text">
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+											sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+											ullamco laboris nisi ut aliquip ex ea commodo consequat.
+											Duis aute irure dolor in reprehenderit in voluptate velit
+											esse cillum dolore eu fugiat nulla pariatur. Excepteur
+											sint occaecat cupidatat non proident, sunt in culpa qui
+											officia deserunt mollit anim id est laborum.
+											<a href="#">more...</a>
+										</p>
+									</div>
+									<div class="divider"></div>
+									<div class="post-detail__post-comment mb-s">
+										<img
+											src="/public/images/picture-136.png"
+											alt=""
+											class="broken-image circle responsive-img profile-image-s"
+										/>
+										<p>
+											<a href="timeline.html" class="profile-link">
+												John
+											</a>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+											sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua. Ut enim ad minim veniam, quis nostrud
+										</p>
+									</div>
+									<div class="post-detail__post-comment mb-s">
+										<img
+											src="/public/images/picture-136.png"
+											alt=""
+											class="broken-image circle responsive-img profile-image-s"
+										/>
+										<p>
+											<a href="timeline.html" class="profile-link">
+												John
+											</a>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+											sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua. Ut enim ad minim veniam, quis nostrud
+										</p>
+									</div>
+									<div class="post-detail__post-comment mb-s">
+										<img
+											src="/public/images/picture-136.png"
+											alt=""
+											class="broken-image circle responsive-img profile-image-s"
+										/>
+										<p>
+											<a href="timeline.html" class="profile-link">
+												John
+											</a>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+											sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua. Ut enim ad minim veniam, quis nostrud
+										</p>
+									</div>
+									<div class="post-detail__post-comment mb-m">
+										<% if(typeof user.avatar === 'undefined') {%>
+										<img
+											src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg"
+											alt=""
+											class="broken-image circle responsive-img profile-image-s"
+										/>
+										<%}else{%>
+										<img
+											src="http://localhost:4000/users/<%= user.id %>/avatar"
+											alt=""
+											class="broken-image circle responsive-img profile-image-s"
+										/>
+										<%}%>
+										<input
+											type="text"
+											class="comment-form"
+											placeholder="Post a comment"
+										/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+<%- include('../partials/footer') %>
