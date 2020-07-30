@@ -11,7 +11,10 @@ const session = require("express-session");
 const flash = require("connect-flash");
 
 const AppError = require("./middlewares/appError");
-const globalErrorHandler = require("./controllers/errorController");
+const {
+  noResourceFound,
+  respondInternalError,
+} = require("./controllers/errorController");
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/authRoutes");
@@ -74,11 +77,6 @@ app.use(authRouter);
 app.use("/users", userRouter);
 app.use("/ranter", newsfeedRouter);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(new AppError("not found", 404));
-});
-
 mongoose
   .connect(process.env.DATABASE_LOCAL, {
     useNewUrlParser: true,
@@ -90,16 +88,20 @@ mongoose
   .catch(() => console.log("not connected to db"));
 
 //Handling unhandle routes
-app.all("*", (req, res, next) => {
-  next(
-    new AppError(
-      `Routes not found. Can't find ${req.originalUrl} on this server`,
-      404
-    )
-  );
-});
+// app.all("*", (req, res, next) => {
+//   next(
+//     new AppError(
+//       `Routes not found. Can't find ${req.originalUrl} on this server`,
+//       404
+//     )
+//   );
+// });
 
-app.use(globalErrorHandler);
+// catch 404 and forward to error handler
+app.use(noResourceFound);
+
+// catch 500 and forward to error handler
+app.use(respondInternalError);
 
 const PORT = process.env.PORT || 4000;
 

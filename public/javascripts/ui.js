@@ -66,7 +66,7 @@ if (form) {
 
     login(formObj)
       .then((res) => {
-        alert("logined");
+        alert("logged in successfully");
         window.setTimeout(() => {
           location.assign("/ranter/newsfeed");
         }, 1500);

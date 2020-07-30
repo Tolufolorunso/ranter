@@ -1,15 +1,19 @@
-module.exports = (error, req, res, next) => {
-  error.statusCode = error.statusCode || 500;
-  error.status = error.status || "error";
-  if (error.statusCode === 404) {
-    return res.status(404).render("404", {
-      message: error.message,
-    });
-  } else if (error.statusCode === 500) {
-    console.log(error);
+exports.noResourceFound = (req, res) => {
+  let errorCode = 404;
+  res.status(errorCode);
+  res.render(`${errorCode}`, { message: "The page does not exist!" });
+};
 
-    return res.status(500).render("500", {
-      message: error.message,
-    });
-  }
+exports.respondInternalError = (error, req, res, next) => {
+  let errorCode = 500;
+  console.log(`ERROR occurred: ${error.stack}`);
+  console.log("tolulope", error);
+  res.status(errorCode);
+
+  res.render("500", {
+    message: "Sorry, our application is experiencing a problem! tolulope",
+  });
+
+  //   res.send(`${errorCode} | Sorry, our application is
+  // experiencing a problem!`);
 };
