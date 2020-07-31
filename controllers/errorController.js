@@ -1,19 +1,35 @@
-exports.noResourceFound = (req, res) => {
-  let errorCode = 404;
-  res.status(errorCode);
-  res.render(`${errorCode}`, { message: "The page does not exist!" });
-};
+const AppError = require('../utils/appError');
+const { Mongoose } = require('mongoose');
 
 exports.respondInternalError = (error, req, res, next) => {
-  let errorCode = 500;
-  console.log(`ERROR occurred: ${error.stack}`);
-  console.log("tolulope", error);
-  res.status(errorCode);
+	let err = { ...error };
+	err.message = error.message;
+	console.log(`ERROR occurred 1: ${error.stack}`);
+	console.log('2', error.message);
+	console.log('3', error.name);
+	console.log('4', error.status);
 
-  res.render("500", {
-    message: "Sorry, our application is experiencing a problem! tolulope",
-  });
+	// Mongoose bad ObjectID
+	if (error.name === 'CastError') {
+		const message = `Resource not found with the user id`;
+		err = new AppError(message, 404);
+	}
 
-  //   res.send(`${errorCode} | Sorry, our application is
-  // experiencing a problem!`);
+	// Mongoose duplicate key
+	if (error.code === 11000) {
+		const message = `Duplicate field value entered`;
+		err = new AppError(message, 400);
+	}
+
+	// Mongoose Validation Error
+	if (error.name === 'ValidationError') {
+		const message = Object.values(error.errors).map(val => val.message);
+		console.log(message);
+		err = new AppError(message, 400);
+	}
+
+	res.status(err.status).json({
+		success: false,
+		message: err.message || 'server error'
+	});
 };
