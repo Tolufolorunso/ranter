@@ -1,55 +1,67 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Ranter | <%= typeof title !== 'undefined' ? title : 'Page' %></title>
+		<!-- font awesome -->
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+			integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+			crossorigin="anonymous"
+		/>
+		<!--Import Google Icon Font-->
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<!-- Compiled and minified CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"
+		/>
+		<!-- Custom css -->
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Photo Ninja</title>
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <!-- Custom css -->
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-
-<body>
-
-    <div class="navbar-fixed">
-        <nav class="nav nav-wrapper black">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="#!" class="brand-logo left">Ranter</a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="/ranter/newsfeed">NewsFeed</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <% if(locals.user) { %>
-                            <li id="logout"><a href="#">logout</a></li>
-                            <%  }else{ %>
-                                <li>
-                                    <a href="/users/login">login</a>
-                                </li>
-                                <% } %>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">NewsFeed</a></li>
-        <li><a href="#">Contact</a></li>
-        <% if(locals.user) { %>
-            <li id="logout"><a href="#">logout</a></li>
-            <%  }else{ %>
-                <li>
-                    <a href="/users/login">login</a>
-                </li>
-                <% } %>
-    </ul>
+	<body>
+		<div class="navbar-fixed">
+			<nav class="nav nav-wrapper black">
+				<div class="container">
+					<div class="nav-wrapper">
+						<a href="#!" class="brand-logo left">Ranter</a>
+						<a href="#" data-target="mobile-demo" class="sidenav-trigger right"
+							><i class="material-icons">menu</i></a
+						>
+						<ul class="right hide-on-med-and-down">
+							<li><a href="#">Home</a></li>
+							<li><a href="/ranter/newsfeed">NewsFeed</a></li>
+							<li><a href="#">Contact</a></li>
+							<% if(locals.user) { %>
+							<li id="logout"><a href="#">logout</a></li>
+							<% }else{ %>
+							<li>
+								<a href="/users/login">login</a>
+							</li>
+							<% } %>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<ul class="sidenav" id="mobile-demo">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">NewsFeed</a></li>
+			<li><a href="#">Contact</a></li>
+			<% if(locals.user) { %>
+			<li id="logout"><a href="#">logout</a></li>
+			<% }else{ %>
+			<li>
+				<a href="/users/login">login</a>
+			</li>
+			<% } %>
+		</ul>
+	</body>
+</html>

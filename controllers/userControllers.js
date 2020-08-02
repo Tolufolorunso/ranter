@@ -13,17 +13,14 @@ exports.getUserProfile = catchAsync(async (req, res) => {
 		req.flash('message', 'Please login to view your profile');
 		return res.render('index');
 	}
-	res.render('./users/profile', { user });
+	res.render('./users/profile', { user, title: 'Profile' });
 });
 
 // @desc        Update user profile
 // @route       PATCH /users/me/profile
 // @access      Private
 exports.updateUserProfile = catchAsync(async (req, res, next) => {
-	const user = await User.findByIdAndUpdate(
-		'5f1de5deeb71de2bd8c523bahhhh',
-		req.body
-	);
+	const user = await User.findByIdAndUpdate(req.user._id, req.body);
 	if (!user) {
 		return next(new AppError('The user doesnt exists', 404));
 	}

@@ -1,0 +1,52 @@
+<div class="create-post mb-m">
+	<form
+		action="/ranter/newsfeed"
+		method="POST"
+		class="form-tag"
+		enctype="multipart/form-data"
+	>
+		<div class="row">
+			<div class="col s7">
+				<div class="form-group text-image">
+					<% if(typeof user.avatar === 'undefined') {%>
+					<img
+						src="/public/images/<%= user.gender === 'male' ? 'male' : 'woman' %>.jpg"
+						alt="profile pic of tolu"
+						class="broken-image circle responsive-img"
+					/>
+					<%} else{%>
+					<img
+						src="http://localhost:4000/users/<%= user.id %>/avatar"
+						alt="profile pic of tolu"
+						class="broken-image circle responsive-img"
+					/>
+					<%}%>
+					<textarea
+						name="body"
+						id="rant-message"
+						class="rant-message"
+						cols="30"
+						rows="10"
+						placeholder="Rant as you like"
+					></textarea>
+				</div>
+			</div>
+			<div class="col s1">
+				<div class="tools">
+					<label for="file-input">
+						<i class="material-icons">camera_alt</i>
+					</label>
+					<input type="file" id="file-input" name="post_image" />
+					<!-- <a href="#"><i class="material-icons">videocam</i></a> -->
+				</div>
+			</div>
+			<div class="col s2">
+				<div class="form-group btn-publish">
+					<button type="submit" class="btn btn-publish-btn">
+						Publish
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

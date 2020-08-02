@@ -7,7 +7,9 @@ const catchAsync = require('../middlewares/catchAsync');
 // @access      Private
 exports.getNewsfeed = catchAsync(async (req, res) => {
 	const posts = await Post.find();
-	res.status(200).render('./newsfeed/newsfeed', { posts });
+	res
+		.status(200)
+		.render('./newsfeed/newsfeed', { posts, title: 'Newsfeed Page' });
 });
 
 // @desc        Get get newsfeed

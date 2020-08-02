@@ -17,6 +17,7 @@ const indexRouter = require('./routes/index');
 const generalRouter = require('./routes/general');
 const authRouter = require('./routes/authRoutes');
 const userRouter = require('./routes/userRoutes');
+const messageRouter = require('./routes/messageRoutes');
 const newsfeedRouter = require('./routes/newsfeedRoute');
 
 const app = express();
@@ -75,6 +76,7 @@ app.use('/', generalRouter);
 app.use(authRouter);
 app.use('/users', userRouter);
 app.use('/ranter', newsfeedRouter);
+app.use('/users', messageRouter);
 
 mongoose
 	.connect(process.env.DATABASE_LOCAL, {
